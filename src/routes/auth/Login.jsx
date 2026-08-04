@@ -1,4 +1,7 @@
-import { faLock, faUser } from '@fortawesome/free-solid-svg-icons';
+import {
+  faKey,
+  faUser,
+} from '@fortawesome/free-solid-svg-icons';
 
 import Button from '../../components/general/Button';
 import Input from '../../components/general/Input';
@@ -34,18 +37,21 @@ function Login({
         className="auth-input"
         value={password}
         setValue={setPassword}
-        icon={faLock}
+        icon={faKey}
         inputAttributes={{
           name: 'password',
           autoComplete: 'current-password',
         }}
       />
 
-      <Button
-        label="Sign In"
-        className="auth-submit-button"
-        onClick={() => {}}
-      />
+      <div className="auth-submit-row">
+        <Button
+          label="Sign In"
+          className="auth-submit"
+          icon={faKey}
+          onClick={() => {}}
+        />
+      </div>
     </div>
   );
 }

@@ -21,7 +21,7 @@ function Button({
         />
       )}
 
-      {label}
+      <span>{label}</span>
     </button>
   );
 }

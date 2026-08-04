@@ -1,4 +1,9 @@
-import { faLock, faUser } from '@fortawesome/free-solid-svg-icons';
+import {
+  faKey,
+  faUser,
+  faUserPlus,
+  faPlus,
+} from '@fortawesome/free-solid-svg-icons';
 
 import Button from '../../components/general/Button';
 import Input from '../../components/general/Input';
@@ -34,18 +39,21 @@ function Register({
         className="auth-input"
         value={password}
         setValue={setPassword}
-        icon={faLock}
+        icon={faKey}
         inputAttributes={{
           name: 'password',
           autoComplete: 'new-password',
         }}
       />
 
-      <Button
-        label="Sign Up"
-        className="auth-submit-button"
-        onClick={() => {}}
-      />
+      <div className="auth-submit-row">
+        <Button
+          label="Sign Up"
+          className="auth-submit"
+          icon={faPlus}
+          onClick={() => {}}
+        />
+      </div>
     </div>
   );
 }

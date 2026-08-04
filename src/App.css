@@ -1,8 +1,19 @@
+html,
+body,
+#root {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
 .App {
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  padding: 30px 0;
-  background-color: #171717;
+  background-color: #666666;
 }

@@ -17,9 +17,7 @@ function Input({
 
   return (
     <div className={`input-container ${className}`}>
-      {label && <label>{label}</label>}
-
-      <div className="input-wrapper">
+      <div className="input-header">
         {icon && (
           <FontAwesomeIcon
             className="input-icon"
@@ -27,14 +25,15 @@ function Input({
           />
         )}
 
-        <input
-          {...inputAttributes}
-          className={icon ? 'input-with-icon' : ''}
-          type={type}
-          value={value}
-          onChange={handleInput}
-        />
+        <label>{label}</label>
       </div>
+
+      <input
+        {...inputAttributes}
+        type={type}
+        value={value}
+        onChange={handleInput}
+      />
     </div>
   );
 }

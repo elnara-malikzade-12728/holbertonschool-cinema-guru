@@ -14,14 +14,6 @@ function Authentication({
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  const showLogin = () => {
-    setSwitch(true);
-  };
-
-  const showRegister = () => {
-    setSwitch(false);
-  };
-
   return (
     <form
       className="authentication"
@@ -30,22 +22,18 @@ function Authentication({
       <div className="authentication-tabs">
         <Button
           label="Sign In"
-          className={
-            _switch
-              ? 'auth-tab auth-tab-active'
-              : 'auth-tab'
-          }
-          onClick={showLogin}
+          className={`authentication-tab ${
+            _switch ? 'active' : ''
+          }`}
+          onClick={() => setSwitch(true)}
         />
 
         <Button
           label="Sign Up"
-          className={
-            !_switch
-              ? 'auth-tab auth-tab-active'
-              : 'auth-tab'
-          }
-          onClick={showRegister}
+          className={`authentication-tab ${
+            !_switch ? 'active' : ''
+          }`}
+          onClick={() => setSwitch(false)}
         />
       </div>
 

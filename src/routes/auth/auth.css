@@ -1,87 +1,96 @@
 .authentication {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: min(420px, calc(100% - 40px));
-  margin: 0 auto;
-  padding: 48px 32px;
-  border-radius: 12px;
-  background-color: #242424;
-  box-shadow: 0 12px 35px rgb(0 0 0 / 25%);
+  width: 500px;
+  min-height: 420px;
+  padding: 0;
+  border: 0;
+  background-color: #ffffff;
+  box-shadow: 0 8px 24px rgb(0 0 0 / 22%);
 }
+
+/* Top tabs */
 
 .authentication-tabs {
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   width: 100%;
-  margin-bottom: 34px;
+  gap: 0;
 }
 
-.authentication-tabs .general-button {
-  min-width: 120px;
-}
-
-.auth-tab {
-  min-height: 44px;
+.authentication-tabs .authentication-tab {
+  width: 100%;
+  height: 54px;
+  min-height: 54px;
+  padding: 0;
+  border: 0;
   border-radius: 0;
-  background-color: transparent;
+  background-color: #c8000b;
   color: #ffffff;
-  opacity: 0.65;
+  font-size: 16px;
+  font-weight: 700 !important;
 }
 
-.auth-tab:first-child {
-  border-radius: 22px 0 0 22px;
+.authentication-tabs .authentication-tab.active {
+  background-color: #ed1c24;
 }
 
-.auth-tab:last-child {
-  border-radius: 0 22px 22px 0;
+.authentication-tabs .authentication-tab:hover {
+  background-color: #ed1c24;
 }
 
-.auth-tab:hover {
-  background-color: #353535;
-  opacity: 1;
-}
-
-.auth-tab.auth-tab-active {
-  background-color: #e01f26;
-  opacity: 1;
-}
+/* Form body */
 
 .auth-content {
   display: flex;
   flex-direction: column;
   width: 100%;
-  gap: 22px;
+  padding: 42px 48px 30px;
 }
 
 .auth-content h1 {
-  margin: 0 0 8px;
-  color: #ffffff;
-  font-size: 23px;
-  font-weight: 600;
+  margin: 0 0 28px;
+  color: #303030;
+  font-size: 20px;
+  font-weight: 700;
   text-align: center;
 }
 
 .auth-input {
   width: 100%;
+  margin-bottom: 18px;
 }
 
-.auth-submit-button {
+/* Bottom action */
+
+.auth-submit-row {
+  display: flex;
+  justify-content: flex-end;
   width: 100%;
-  margin-top: 10px;
+  margin-top: 12px;
 }
 
-@media (max-width: 520px) {
+.auth-submit-row .auth-submit {
+  min-width: 100px;
+  min-height: 38px;
+  padding: 8px 12px;
+  background-color: #d80d18;
+  color: #ffffff;
+}
+
+.auth-submit-row .auth-submit:hover {
+  background-color: #ed1c24;
+}
+
+@media (max-width: 560px) {
   .authentication {
-    width: calc(100% - 24px);
-    padding: 36px 20px;
+    width: calc(100% - 30px);
   }
 
-  .authentication-tabs .general-button {
-    min-width: 105px;
+  .auth-content {
+    padding: 34px 28px 26px;
   }
-
-  .auth-content h1 {
-    font-size: 20px;
-  }
+}
+.authentication-tabs .authentication-tab .button-label {
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 800;
 }
