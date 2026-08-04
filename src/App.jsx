@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-import Authentication from './components/Authentication';
-import Dashboard from './components/Dashboard';
+import Authentication from './routes/auth/Authentication';
 
 import './App.css';
 
@@ -11,7 +10,8 @@ function App() {
   const [userUsername, setUserUsername] = useState('');
 
   useEffect(() => {
-    const accessToken = localStorage.getItem('accessToken');
+    const accessToken =
+      localStorage.getItem('accessToken');
 
     if (!accessToken) {
       return;
@@ -37,10 +37,17 @@ function App() {
       });
   }, []);
 
-  return isLoggedIn ? (
-    <Dashboard userUsername={userUsername} />
-  ) : (
-    <Authentication />
+  return (
+    <div className="App">
+      {isLoggedIn ? (
+        <div>Dashboard for {userUsername}</div>
+      ) : (
+        <Authentication
+          setIsLoggedIn={setIsLoggedIn}
+          setUserUsername={setUserUsername}
+        />
+      )}
+    </div>
   );
 }
 
