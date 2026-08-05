@@ -1,0 +1,117 @@
+.movie-filter {
+  width: 240px;
+  padding: 18px 16px;
+  background-color: #242424;
+  color: #ffffff;
+}
+
+.movie-filter .search-bar {
+  height: 38px;
+  margin-bottom: 18px;
+  background-color: #292929;
+  color: #ffffff;
+}
+
+.filter-years {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.movie-filter .input-header label,
+.movie-filter .select-input-container label {
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.movie-filter .input-container input,
+.movie-filter .select-input-container select {
+  color: #ffffff;
+}
+
+.filter-tags,
+.movie-genres {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 14px 0 0;
+  padding: 0;
+}
+
+.movie-tag {
+  padding: 4px 8px;
+  border-radius: 2px;
+  background-color: #ed1c24;
+  color: #ffffff;
+  font-size: 11px;
+  list-style: none;
+  text-transform: capitalize;
+  cursor: pointer;
+}
+
+.filter-tag {
+  background-color: #3a3a3a;
+}
+
+.filter-tag.selected {
+  background-color: #ed1c24;
+}
+
+.movie-card {
+  width: 260px;
+  overflow: hidden;
+  background-color: #282828;
+  box-shadow: 0 4px 12px rgb(0 0 0 / 35%);
+  color: #ffffff;
+  list-style: none;
+}
+
+.movie-poster {
+  position: relative;
+  width: 100%;
+  height: 350px;
+  background-color: #333333;
+  background-position: center;
+  background-size: cover;
+}
+
+.movie-actions {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  gap: 1px;
+}
+
+.movie-actions svg {
+  width: 18px;
+  height: 18px;
+  padding: 10px;
+  background-color: rgb(20 20 20 / 82%);
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.movie-actions svg.active,
+.movie-actions svg:hover {
+  background-color: #ed1c24;
+}
+
+.movie-details {
+  padding: 12px;
+  text-align: left;
+}
+
+.movie-details h2 {
+  margin: 0 0 8px;
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.movie-details p {
+  margin: 0;
+  color: #cccccc;
+  font-size: 12px;
+  line-height: 1.4;
+}

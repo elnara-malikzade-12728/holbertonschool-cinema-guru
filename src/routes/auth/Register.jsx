@@ -1,7 +1,6 @@
 import {
   faKey,
   faUser,
-  faUserPlus,
   faPlus,
 } from '@fortawesome/free-solid-svg-icons';
 
