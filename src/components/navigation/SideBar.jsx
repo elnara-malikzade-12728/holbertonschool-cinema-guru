@@ -3,11 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-  faBars,
-  faChevronDown,
   faClock,
-  faHeart,
-  faHouse,
+  faFolder,
+  faRightLong,
+  faStar,
 } from '@fortawesome/free-solid-svg-icons';
 
 import Activity from '../Activity';
@@ -28,71 +27,84 @@ function SideBar() {
   };
 
   const setPage = (pageName) => {
-    const normalizedPageName = pageName.toLowerCase().replace(/\s/g, '');
-    setSelected(normalizedPageName);
-    navigate(routes[normalizedPageName]);
+    const page = pageName.toLowerCase().replace(/\s/g, '');
+    setSelected(page);
+    navigate(routes[page]);
   };
 
   useEffect(() => {
+    const accessToken = localStorage.getItem('accessToken');
+
     axios
-      .get('/api/activity')
-      .then((response) => setActivities(response.data))
+      .get('/api/activity', {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      })
+      .then((response) => {
+        const activityData = Array.isArray(response.data)
+          ? response.data
+          : response.data?.activities;
+
+        setActivities(
+          Array.isArray(activityData) ? activityData : [],
+        );
+      })
       .catch(() => setActivities([]));
   }, []);
 
-  return (
-    <nav className={`side-bar ${small ? 'small' : ''}`}>
-      <button
-        type="button"
-        className="side-bar-toggle"
-        onClick={() => setSmall(!small)}
-        aria-label="Toggle sidebar"
-      >
-        <FontAwesomeIcon icon={faBars} />
-      </button>
+  const openSideBar = () => {
+    setSmall(false);
+    setShowActivities(true);
+  };
 
+  const closeSideBar = () => {
+    setSmall(true);
+    setShowActivities(false);
+  };
+
+  const items = [
+    { name: 'Home', page: 'home', icon: faFolder },
+    { name: 'Favorites', page: 'favorites', icon: faStar },
+    { name: 'Watch Later', page: 'watchlater', icon: faClock },
+  ];
+
+  return (
+    <nav
+      className={`side-bar ${small ? 'small' : ''}`}
+      onMouseEnter={openSideBar}
+      onMouseLeave={closeSideBar}
+    >
       <ul className="side-bar-navigation">
-        <li
-          className={selected === 'home' ? 'selected' : ''}
-          onClick={() => setPage('Home')}
-        >
-          <FontAwesomeIcon icon={faHouse} />
-          <span>Home</span>
-        </li>
-        <li
-          className={selected === 'favorites' ? 'selected' : ''}
-          onClick={() => setPage('Favorites')}
-        >
-          <FontAwesomeIcon icon={faHeart} />
-          <span>Favorites</span>
-        </li>
-        <li
-          className={selected === 'watchlater' ? 'selected' : ''}
-          onClick={() => setPage('Watch Later')}
-        >
-          <FontAwesomeIcon icon={faClock} />
-          <span>Watch Later</span>
-        </li>
+        {items.map((item) => (
+          <li
+            key={item.page}
+            className={selected === item.page ? 'selected' : ''}
+            onClick={() => setPage(item.name)}
+          >
+            <FontAwesomeIcon icon={item.icon} />
+            <span>{item.name}</span>
+            {selected === item.page && (
+              <FontAwesomeIcon className="page-arrow" icon={faRightLong} />
+            )}
+          </li>
+        ))}
       </ul>
 
-      <button
-        type="button"
-        className="activities-toggle"
-        onClick={() => setShowActivities(!showActivities)}
-      >
-        <span>Latest Activities</span>
-        <FontAwesomeIcon icon={faChevronDown} />
-      </button>
-
       {showActivities && (
-        <ul className="activity-list">
-          {activities.slice(0, 10).map((activity, index) => (
-            <Activity
-              key={activity.id || activity._id || index}
-              activity={activity}
-            />
-          ))}
-        </ul>
+        <div className="activities-panel">
+          <h2>Latest Activities</h2>
+          <ul className="activity-list">
+            {(Array.isArray(activities) ? activities : [])
+              .slice(0, 10)
+              .map((activity, index) => (
+              <Activity
+                key={activity.id || activity._id || index}
+                activity={activity}
+              />
+              ))}
+          </ul>
+        </div>
       )}
     </nav>
   );

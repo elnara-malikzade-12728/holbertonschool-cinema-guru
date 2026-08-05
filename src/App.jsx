@@ -7,7 +7,7 @@ import Dashboard from './routes/dashboard/Dashboard';
 import './App.css';
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [userUsername, setUserUsername] = useState('');
 
   useEffect(() => {

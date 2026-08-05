@@ -1,18 +1,22 @@
 .activity-item {
-  margin: 0;
-  padding: 8px 12px;
-  border-bottom: 1px solid #333333;
+  margin: 0 0 9px;
+  padding: 0;
   list-style: none;
 }
 
 .activity-item p {
   margin: 0;
-  color: #b7b7b7;
-  font-size: 11px;
-  line-height: 1.4;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.05;
 }
 
-.activity-item strong {
+.activity-item span {
+  color: #ed1c24;
+}
+
+.activity-item em {
   color: #ffffff;
-  font-weight: 600;
+  font-style: italic;
 }

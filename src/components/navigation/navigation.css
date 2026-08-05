@@ -54,30 +54,20 @@
 }
 
 .side-bar {
-  width: 210px;
+  position: relative;
+  z-index: 10;
+  flex: 0 0 215px;
+  width: 215px;
   min-height: calc(100vh - 36px);
-  background-color: #181818;
-  color: #b7b7b7;
-  transition: width 0.2s ease;
+  overflow: hidden;
+  background-color: #d0000b;
+  color: #ffffff;
+  transition: width 0.2s ease, flex-basis 0.2s ease;
 }
 
 .side-bar.small {
-  width: 52px;
-}
-
-.side-bar button {
-  border: 0;
-  color: inherit;
-  background: transparent;
-  cursor: pointer;
-}
-
-.side-bar-toggle {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 52px;
-  height: 44px;
+  flex-basis: 48px;
+  width: 48px;
 }
 
 .side-bar ul {
@@ -88,19 +78,21 @@
 .side-bar-navigation li {
   display: flex;
   align-items: center;
-  gap: 14px;
-  height: 44px;
-  padding: 0 18px;
+  gap: 12px;
+  width: 215px;
+  height: 48px;
+  padding: 0 16px;
   box-sizing: border-box;
   list-style: none;
-  font-size: 12px;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 700;
   white-space: nowrap;
   cursor: pointer;
 }
 
 .side-bar-navigation li:hover,
 .side-bar-navigation li.selected {
-  color: #ffffff;
   background-color: #ed1c24;
 }
 
@@ -109,23 +101,37 @@
   flex: 0 0 16px;
 }
 
-.side-bar.small span,
-.side-bar.small .activities-toggle,
-.side-bar.small .activity-list {
+.side-bar-navigation .page-arrow {
+  width: 15px;
+  margin-left: auto;
+}
+
+.side-bar.small .side-bar-navigation span,
+.side-bar.small .page-arrow,
+.side-bar.small .activities-panel {
   display: none;
 }
 
-.activities-toggle {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  padding: 16px 12px 8px;
-  font-size: 11px;
-  text-transform: uppercase;
+.activities-panel {
+  margin: 12px 4px;
+  padding: 8px 10px 10px;
+  border: 3px solid #343434;
+  background-color: #222222;
+}
+
+.activities-panel h2 {
+  margin: 0 0 14px;
+  padding-bottom: 4px;
+  border-bottom: 2px solid #ffffff;
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 700;
+  text-align: left;
+  white-space: nowrap;
 }
 
 .activity-list {
-  max-height: 320px;
-  overflow-y: auto;
+  max-height: calc(100vh - 190px);
+  overflow: hidden;
+  text-align: left;
 }
