@@ -49,7 +49,7 @@ function Login({
           label="Sign In"
           className="auth-submit"
           icon={faKey}
-          onClick={() => {}}
+          type="submit"
         />
       </div>
     </div>

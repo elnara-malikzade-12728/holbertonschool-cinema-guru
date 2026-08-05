@@ -7,11 +7,12 @@ function Button({
   className = '',
   onClick,
   icon,
+  type = 'button',
 }) {
   return (
     <button
       className={`general-button ${className}`}
-      type="button"
+      type={type}
       onClick={onClick}
     >
       {icon && (

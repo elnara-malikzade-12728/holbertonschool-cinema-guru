@@ -51,7 +51,7 @@ function Register({
           label="Sign Up"
           className="auth-submit"
           icon={faPlus}
-          onClick={() => {}}
+          type="submit"
         />
       </div>
     </div>
