@@ -19,8 +19,8 @@ function Authentication({
     event.preventDefault();
 
     const route = _switch
-      ? '/api/auth/login'
-      : '/api/auth/register';
+      ? 'http://localhost:8000/api/auth/login'
+      : 'http://localhost:8000/api/auth/register';
 
     axios
       .post(route, { username, password })

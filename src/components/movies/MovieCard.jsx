@@ -20,10 +20,10 @@ function MovieCard({ movie }) {
 
   useEffect(() => {
     Promise.all([
-      axios.get('/api/titles/favorite/', {
+      axios.get('http://localhost:8000/api/titles/favorite/', {
         headers: getHeaders(),
       }),
-      axios.get('/api/titles/watchlater/', {
+      axios.get('http://localhost:8000/api/titles/watchlater/', {
         headers: getHeaders(),
       }),
     ])
@@ -49,7 +49,7 @@ function MovieCard({ movie }) {
     const selected = type === 'favorite'
       ? isFavorite
       : isWatchLater;
-    const route = `/api/titles/${type}/${movie.imdbId}`;
+    const route = `http://localhost:8000/api/titles/${type}/${movie.imdbId}`;
     const request = selected
       ? axios.delete(route, { headers: getHeaders() })
       : axios.post(route, {}, { headers: getHeaders() });

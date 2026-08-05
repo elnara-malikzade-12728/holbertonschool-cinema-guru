@@ -36,7 +36,7 @@ function SideBar() {
     const accessToken = localStorage.getItem('accessToken');
 
     axios
-      .get('/api/activity', {
+      .get('http://localhost:8000/api/activity', {
         headers: {
           Authorization: `Bearer ${accessToken}`,
         },

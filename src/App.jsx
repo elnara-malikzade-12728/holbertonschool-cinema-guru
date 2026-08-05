@@ -20,7 +20,7 @@ function App() {
 
     axios
       .post(
-        '/api/auth/',
+        'http://localhost:8000/api/auth/',
         {},
         {
           headers: {
