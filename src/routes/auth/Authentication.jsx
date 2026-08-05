@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import axios from 'axios';
 
 import Button from '../../components/general/Button';
 import Login from './Login';
@@ -14,10 +15,29 @@ function Authentication({
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    const route = _switch
+      ? '/api/auth/login'
+      : '/api/auth/register';
+
+    axios
+      .post(route, { username, password })
+      .then((response) => {
+        localStorage.setItem(
+          'accessToken',
+          response.data.accessToken,
+        );
+        setUserUsername(username);
+        setIsLoggedIn(true);
+      });
+  };
+
   return (
     <form
       className="authentication"
-      onSubmit={(event) => event.preventDefault()}
+      onSubmit={handleSubmit}
     >
       <div className="authentication-tabs">
         <Button
