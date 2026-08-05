@@ -15,3 +15,74 @@
   min-width: 0;
   background-color: #202020;
 }
+
+.home-page,
+.movies-page {
+  width: 100%;
+  min-height: calc(100vh - 36px);
+  padding-bottom: 30px;
+  color: #ffffff;
+}
+
+.movies-page {
+  padding: 12px 55px 30px;
+}
+
+.movies-page h1 {
+  width: max-content;
+  margin: 0 auto 42px;
+  padding-bottom: 3px;
+  border-bottom: 3px solid #ed1c24;
+  color: #ffffff;
+  font-size: 34px;
+  font-weight: 400;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.movies-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 28px 18px;
+  width: 100%;
+  margin: 0;
+  padding: 30px 58px;
+}
+
+.movies-page .movies-grid {
+  padding: 0;
+}
+
+.load-more {
+  min-width: 120px;
+  margin: 0 auto;
+}
+
+@media (max-width: 650px) {
+  .movies-grid {
+    grid-template-columns: minmax(0, 300px);
+    padding-inline: 12px;
+  }
+
+  .movies-page {
+    padding: 20px 12px;
+  }
+}
+
+@media (max-width: 900px) {
+  .movies-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    padding-inline: 24px;
+  }
+}
+
+@media (max-width: 650px) {
+  .movies-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .movies-page h1 {
+    max-width: 100%;
+    font-size: 24px;
+  }
+}
