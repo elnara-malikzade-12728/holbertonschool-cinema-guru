@@ -2,7 +2,11 @@ import './components.css';
 
 function Activity({ activity }) {
   const username = activity?.username || activity?.userUsername || activity?.user?.username || '';
-  const movieTitle = activity?.movieTitle || activity?.title || activity?.movie?.title || '';
+  const movieTitle = activity?.movieTitle
+    || activity?.title?.title
+    || (typeof activity?.title === 'string' ? activity.title : '')
+    || activity?.movie?.title
+    || '';
   const activityType = activity?.activityType || '';
   const actions = {
     favorite: ['added', 'to favorites'],

@@ -1,4 +1,8 @@
-import { useEffect, useState } from 'react';
+import {
+  useCallback,
+  useEffect,
+  useState,
+} from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -32,10 +36,10 @@ function SideBar() {
     navigate(routes[page]);
   };
 
-  useEffect(() => {
+  const loadActivities = useCallback(() => {
     const accessToken = localStorage.getItem('accessToken');
 
-    axios
+    return axios
       .get('http://localhost:8000/api/activity', {
         headers: {
           Authorization: `Bearer ${accessToken}`,
@@ -53,9 +57,14 @@ function SideBar() {
       .catch(() => setActivities([]));
   }, []);
 
+  useEffect(() => {
+    loadActivities();
+  }, [loadActivities]);
+
   const openSideBar = () => {
     setSmall(false);
     setShowActivities(true);
+    loadActivities();
   };
 
   const closeSideBar = () => {
